@@ -10,7 +10,7 @@ print(np.arange(1.2, 5.4, 1.4))
 print(np.arange(1.2, 5.4, 1.4, dtype=np.int))
 
 a = np.arange(1.2, 5.4, 1.4, dtype=np.int)
-print(a.ndim)  # get dimension of the array
+print(a.ndim)  # get axis of the array(1D, 2D, ...)
 print(a.size)  # get total size of the array
 print(a.shape)  # get shape of dimension of the array
 
@@ -34,7 +34,3 @@ print(c * d)
 print(c / d)
 
 print(np.linspace(1, 2, 4))  # create a 1D array by same gap.
-
-e = np.array([[1, 2, 3], [4, 5, 6]])  # create a 2D(2,3) array
-print(e.shape)
-print(e.reshape(6,)) # reshape a 2D array to be a 1D array.
