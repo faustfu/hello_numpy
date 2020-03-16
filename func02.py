@@ -14,3 +14,7 @@ e = np.array([[3, 0], [0, 4]])  # [[x1,y1],[x2,y2]] two vectors
 print(la.det(e)/2) # calculate area of the triangle by determinant
 
 print(la.eig(e)) # return a tuple of eigenvalue array and eigenvector array
+print('----')
+f = np.array([[0,1],[1,0]])
+print(f)
+print(la.eig(f))
