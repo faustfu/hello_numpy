@@ -9,7 +9,7 @@ num_consecutive_iterations = 100
 num_episodes = 5000
 last_time_steps = np.zeros(num_consecutive_iterations)
 
-q_table = np.random.uniform(low=-1, high=1, size=(4 ** 4, env.action_space.n))
+q_table = np.random.uniform(low=-1, high=1, size=(4 ** 4, env.action_space.n)) # size= (256,2)
 
 def bins(clip_min, clip_max, num):
     return np.linspace(clip_min, clip_max, num + 1)[1:-1]
@@ -20,7 +20,7 @@ def digitize_state(observation):
                  np.digitize(cart_v, bins=bins(-3.0, 3.0, 4)),
                  np.digitize(pole_angle, bins=bins(-0.5, 0.5, 4)),
                  np.digitize(pole_v, bins=bins(-2.0, 2.0, 4))]
-    return sum([x * (4 ** i) for i, x in enumerate(digitized)])
+    return sum([x * (4 ** i) for i, x in enumerate(digitized)]) # convert a 4x4 bit array to be a 16 bit value
 
 def get_action(state, action, observation, reward):
     next_state = digitize_state(observation)
@@ -38,7 +38,7 @@ for episode in range(num_episodes):
     observation = env.reset()
 
     state = digitize_state(observation)
-    action = np.argmax(q_table[state])
+    action = np.argmax(q_table[state]) # choose right or left action(0 or 1) by it's score
 
     episode_reward = 0
     for t in range(max_number_of_steps):
@@ -46,7 +46,7 @@ for episode in range(num_episodes):
 
         observation, reward, done, info = env.step(action)
 
-        action, state = get_action(state, action, observation, reward)
+        action, state = get_action(state, action, observation, reward) # get next state and decide next action
         episode_reward += reward
 
         if done:

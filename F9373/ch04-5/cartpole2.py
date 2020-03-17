@@ -29,7 +29,7 @@ def get_action(state, action, observation, reward):
     if  epsilon <= np.random.uniform(0, 1):
         next_action = np.argmax(q_table[next_state])
     else:
-        next_action = np.random.choice([0, 1])
+        next_action = np.random.choice([0, 1]) # choose right or left action(0 or 1) randomly
 
     alpha = 0.2
     gamma = 0.99

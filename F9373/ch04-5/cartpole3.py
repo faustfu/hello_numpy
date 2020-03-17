@@ -25,7 +25,7 @@ def digitize_state(observation):
 def get_action(state, action, observation, reward, episode):
     next_state = digitize_state(observation)
 
-    epsilon = 0.5 * (0.99 ** episode)
+    epsilon = 0.5 * (0.99 ** episode) # reduced by episode
     if  epsilon <= np.random.uniform(0, 1):
         next_action = np.argmax(q_table[next_state])
     else:

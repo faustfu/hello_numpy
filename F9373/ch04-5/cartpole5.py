@@ -2,7 +2,7 @@ import gym
 import numpy as np
 import matplotlib.pyplot as plt
 
-def do_episode(w, env):
+def do_episode(w, env): # 給定特定權重，計算行動步數
     done = False
     observation = env.reset()
     num_steps = 0
@@ -15,11 +15,11 @@ def do_episode(w, env):
     step_val = -1 if num_steps >= max_number_of_steps else num_steps - max_number_of_steps
     return step_val, num_steps
 
-def take_action(X, w): 
+def take_action(X, w): # 依據狀態分數決定行動
     action = 1 if calculate(X, w) > 0.0 else 0
     return action
 
-def calculate(X, w):
+def calculate(X, w): # 計算特定權重下的狀態分數
     result = np.dot(X, w)
     return result
 
@@ -36,7 +36,7 @@ n_states = 4
 num_batch = 10
 num_consecutive_iterations = 100
 
-w = np.random.randn(n_states)
+w = np.random.randn(n_states) # 4個狀態的權重
 reward_list = np.zeros(num_batch)
 reward_h = []
 last_time_steps = np.zeros(num_consecutive_iterations)
